@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./style.css";
-import App from "./App";
+import "normalize.css";
+import "./styles/styles.scss";
+import Weather from "./components/Weather";
 import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Weather />, document.getElementById("root"));
 
 serviceWorker.unregister();
