@@ -1,2 +1,9 @@
+/* BASE STYLES
+========================================== */
 @import "./base/settings";
 @import "./base/base";
+
+/* COMPONENT STYLES
+========================================== */
+@import "./components/header";
+@import "./components/search";

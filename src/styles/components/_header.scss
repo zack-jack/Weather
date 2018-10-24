@@ -1,0 +1,12 @@
+@import "../mixins/text-gradient";
+
+h1 {
+  @include text-gradient($color-eminence, $color-mulberry);
+  font-size: 4rem;
+  margin: 0;
+}
+
+.logo-icon {
+  @include text-gradient($color-eminence, $color-mulberry);
+  font-size: 5.5rem;
+}

@@ -1,0 +1,18 @@
+// Text Linear Gradient
+@mixin text-gradient(
+  $color1,
+  $color2,
+  $startPoint: right top,
+  $endPoint: left bottom
+) {
+  color: mix($color1, $color2);
+  background: -webkit-gradient(
+    linear,
+    $startPoint,
+    $endPoint,
+    from($color1),
+    to($color2)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
