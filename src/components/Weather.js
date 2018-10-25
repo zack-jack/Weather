@@ -16,8 +16,10 @@ const api_key = process.env.REACT_APP_WEATHER_API_KEY;
 class Weather extends Component {
   state = {
     data: {
+      dt: 0,
       main: {
         humidity: 0,
+        pressure: 0,
         temp: 0,
         temp_max: 0,
         temp_min: 0
@@ -27,6 +29,7 @@ class Weather extends Component {
         sunrise: 0,
         sunset: 0
       },
+      visibility: 0,
       weather: [
         {
           description: "",
@@ -63,6 +66,7 @@ class Weather extends Component {
         )
         .then(res => {
           this.setState({ data: res.data });
+          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
@@ -98,7 +102,16 @@ class Weather extends Component {
           highTemp={this.state.data.main.temp_max}
           lowTemp={this.state.data.main.temp_min}
         />
-        <CurrentDetailed />
+        <CurrentDetailed
+          humidity={this.state.data.main.humidity}
+          pressure={this.state.data.main.pressure}
+          sunrise={this.state.data.sys.sunrise}
+          sunset={this.state.data.sys.sunset}
+          timestamp={this.state.data.dt}
+          visibility={this.state.data.visibility}
+          windDirection={this.state.data.wind.deg}
+          windSpeed={this.state.data.wind.speed}
+        />
       </div>
     );
   }

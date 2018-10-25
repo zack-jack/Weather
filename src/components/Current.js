@@ -71,7 +71,10 @@ const Current = props => {
   return (
     <div>
       <div>
-        <h2>{props.currentTemp}</h2>
+        <h2>
+          {Math.floor(props.currentTemp)}
+          <span className="wi wi-fahrenheit" />
+        </h2>
         <span className={getIconClass(responseIcon)} />
         <h3>{props.description}</h3>
         <h3>
@@ -81,9 +84,15 @@ const Current = props => {
 
       <div>
         <span className="wi wi-direction-up" />
-        <p>Today's high: {props.highTemp}</p>
+        <p>
+          Today's high: {Math.floor(props.highTemp)}{" "}
+          <span className="wi wi-fahrenheit" />
+        </p>
         <span className="wi wi-direction-down" />
-        <p>Today's low: {props.lowTemp}</p>
+        <p>
+          Today's low: {Math.floor(props.lowTemp)}{" "}
+          <span className="wi wi-fahrenheit" />
+        </p>
       </div>
     </div>
   );

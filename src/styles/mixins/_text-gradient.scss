@@ -2,8 +2,8 @@
 @mixin text-gradient(
   $color1,
   $color2,
-  $startPoint: right top,
-  $endPoint: left bottom
+  $startPoint: left bottom,
+  $endPoint: left top
 ) {
   color: mix($color1, $color2);
   background: -webkit-gradient(
