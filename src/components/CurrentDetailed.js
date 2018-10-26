@@ -6,6 +6,43 @@ const CurrentDetailed = props => {
     .unix(props.timestamp)
     .format("ddd, MMM Do, YYYY h:mm a");
 
+  /* Converts hPa to inHg */
+  /* 1 inHg = 33.8639 hPa */
+  const inchesHg = Math.round(100 * (props.pressure / 33.8639)) / 100;
+
+  /* Converts meters to miles */
+  /* 1 mile = 1609.34 meters */
+  const miles = Math.round((100 * props.visibility) / 1609.34) / 100;
+
+  const directions = [
+    0,
+    23,
+    45,
+    68,
+    90,
+    113,
+    135,
+    158,
+    180,
+    203,
+    225,
+    248,
+    270,
+    293,
+    313,
+    336
+  ];
+
+  const windDirection = Math.floor(props.windDirection);
+
+  const closest = directions
+    .sort(
+      (a, b) => Math.abs(windDirection - a) - Math.abs(windDirection - b)
+    )[0]
+    .toString();
+
+  console.log(closest);
+
   return (
     <div>
       <div>
@@ -43,10 +80,10 @@ const CurrentDetailed = props => {
           <p>{props.humidity} %</p>
           <span className="wi wi-barometer" />
           <p>Barometric Pressure</p>
-          <p>{props.pressure}</p>
+          <p>{inchesHg} inHg</p>
           <span className="wi wi-dust" />
           <p>Visibility</p>
-          <p>{props.visibility}</p>
+          <p>{miles} miles</p>
         </div>
       </div>
 
@@ -54,12 +91,12 @@ const CurrentDetailed = props => {
         <h3>Wind</h3>
 
         <div>
-          <span className="wi wi-wind towards-45-deg" />
+          <span className={`wi wi-wind towards-${closest}-deg`} />
           <p>Wind Direction</p>
-          <p>{props.windDirection}</p>
+          <p>{windDirection} deg</p>
           <span className="wi wi-strong-wind" />
           <p>Wind Speed</p>
-          <p>{props.windSpeed}</p>
+          <p>{props.windSpeed} mph</p>
         </div>
       </div>
     </div>
