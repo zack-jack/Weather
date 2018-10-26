@@ -1,20 +1,34 @@
 @import "../mixins/text-gradient";
 
 .header {
+  align-items: center;
   display: flex;
-  padding: 3rem 0;
+
+  &__logo-container {
+    align-items: center;
+    display: flex;
+    flex: 0;
+    padding: 2.5rem 0;
+  }
 
   &__logo-text {
     @include text-gradient($color-purple, $color-crimson);
     flex: 1;
     font-size: 4rem;
     margin: 0;
+    margin-left: 1.25rem;
   }
 
   &__logo {
     @include text-gradient($color-purple, $color-crimson);
     flex: 0;
     font-size: 6rem;
-    padding: 2rem;
+    margin-left: 1.5rem;
+    padding: 2rem 0;
+  }
+
+  &__search-container {
+    flex: 1;
+    margin-left: 5rem;
   }
 }

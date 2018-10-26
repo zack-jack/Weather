@@ -8,15 +8,16 @@ const countriesSorted = countries.sort((a, b) => {
 });
 
 const Search = props => (
-  <div className="search__container">
+  <div className="search">
     <form onSubmit={props.getWeather}>
       <input
+        autoComplete="off"
         className="search__input"
         name="search"
         type="text"
         placeholder="Search..."
       />
-      <select name="country">
+      <select className="search__option" name="country">
         <option value="us">US</option>
         {countriesSorted.map(country => {
           return (
@@ -27,7 +28,7 @@ const Search = props => (
         })}
         ;
       </select>
-      <button type="submit">
+      <button className="search__icon" type="submit">
         <FontAwesomeIcon icon="search" />
       </button>
     </form>

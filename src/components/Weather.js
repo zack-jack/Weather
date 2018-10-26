@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 import Current from "./Current";
 import CurrentDetailed from "./CurrentDetailed";
@@ -9,7 +9,7 @@ import Header from "./Header";
 import Search from "./Search";
 
 /* Font awesome icons library */
-library.add(faSearch);
+library.add(faSearch, faMapMarkerAlt);
 
 const api_key = process.env.REACT_APP_WEATHER_API_KEY;
 
@@ -59,20 +59,17 @@ class Weather extends Component {
     };
 
     if (hasNumber(searchValue) === true) {
-      console.log("Zip code searched");
       axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue}&appid=${api_key}&units=imperial`
         )
         .then(res => {
           this.setState({ data: res.data });
-          console.log(res.data);
         })
         .catch(err => {
           console.log(err);
         });
     } else if (hasLetters(searchValue) === true) {
-      console.log("City, Country searched");
       axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?q=${searchValue},${selectedCountryCode}&appid=${api_key}&units=imperial`
@@ -86,13 +83,15 @@ class Weather extends Component {
     } else {
       console.log("Invalid search terms");
     }
+
+    /* Clear the input field */
+    e.target.reset();
   };
 
   render() {
     return (
       <div>
-        <Header />
-        <Search getWeather={this.getWeather} />
+        <Header getWeather={this.getWeather} />
         <Current
           currentTemp={this.state.data.main.temp}
           icon={this.state.data.weather[0].icon}

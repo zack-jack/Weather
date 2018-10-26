@@ -1,7 +1,36 @@
-.search__container {
-  margin: 0 auto;
-}
+.search {
+  color: $color-dark-grey;
 
-.search__input {
-  width: 40rem;
+  &__input {
+    border: none;
+    border-bottom: 1px solid $color-dark-grey;
+    height: 2.7rem;
+    padding: 0 0.75rem 0.5rem 0.75rem;
+    width: 30rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__option {
+    border: none;
+    border-bottom: 1px solid $color-dark-grey;
+    height: 2.7rem;
+    margin-left: 2.5rem;
+    padding: 0 0 0.5rem 0;
+  }
+
+  &__icon {
+    background: none;
+    border: none;
+    color: $color-dark-grey;
+    font-size: 1.6rem;
+    height: 2.8rem;
+    margin-left: 1.6rem;
+    margin-top: 0.5rem;
+    width: 2.8rem;
+    text-align: center;
+    vertical-align: middle;
+  }
 }

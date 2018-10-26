@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Current = props => {
   const responseIcon = props.icon;
@@ -77,9 +78,12 @@ const Current = props => {
         </h2>
         <span className={getIconClass(responseIcon)} />
         <h3>{props.description}</h3>
-        <h3>
-          {props.city}, {props.country}
-        </h3>
+        <div>
+          <FontAwesomeIcon icon="map-marker-alt" />
+          <h3>
+            {props.city}, {props.country}
+          </h3>
+        </div>
       </div>
 
       <div>

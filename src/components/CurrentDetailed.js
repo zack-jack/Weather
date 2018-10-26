@@ -41,8 +41,6 @@ const CurrentDetailed = props => {
     )[0]
     .toString();
 
-  console.log(closest);
-
   return (
     <div>
       <div>
