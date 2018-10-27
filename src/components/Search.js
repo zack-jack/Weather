@@ -15,7 +15,7 @@ const Search = props => (
         className="search__input"
         name="search"
         type="text"
-        placeholder="Search..."
+        placeholder="Search by zip code or by city"
       />
       <select className="search__option" name="country">
         <option value="us">US</option>

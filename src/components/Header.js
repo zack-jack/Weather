@@ -5,7 +5,7 @@ import Search from "./Search";
 const Header = props => (
   <div className="header">
     <div className="header__logo-container">
-      <span className="header__logo wi wi-day-cloudy" />
+      <div className="header__logo wi wi-day-cloudy" />
       <h1 className="header__logo-text">weather.</h1>
     </div>
 

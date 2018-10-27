@@ -89,19 +89,24 @@ class Weather extends Component {
   };
 
   render() {
+    if (this.state.data.dt === 0) {
+      return <Header getWeather={this.getWeather} />;
+    }
+
     return (
       <div>
         <Header getWeather={this.getWeather} />
-        <Current
-          currentTemp={this.state.data.main.temp}
-          icon={this.state.data.weather[0].icon}
-          description={this.state.data.weather[0].description}
-          city={this.state.data.name}
-          country={this.state.data.sys.country}
-          highTemp={this.state.data.main.temp_max}
-          lowTemp={this.state.data.main.temp_min}
-        />
-        <CurrentDetailed
+        <div className="weather__details">
+          <Current
+            currentTemp={this.state.data.main.temp}
+            icon={this.state.data.weather[0].icon}
+            description={this.state.data.weather[0].description}
+            city={this.state.data.name}
+            country={this.state.data.sys.country}
+            highTemp={this.state.data.main.temp_max}
+            lowTemp={this.state.data.main.temp_min}
+          />
+          {/* <CurrentDetailed
           humidity={this.state.data.main.humidity}
           pressure={this.state.data.main.pressure}
           sunrise={this.state.data.sys.sunrise}
@@ -110,7 +115,8 @@ class Weather extends Component {
           visibility={this.state.data.visibility}
           windDirection={this.state.data.wind.deg}
           windSpeed={this.state.data.wind.speed}
-        />
+        /> */}
+        </div>
       </div>
     );
   }

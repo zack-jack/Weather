@@ -1,0 +1,76 @@
+.current {
+  color: $color-white;
+  height: 100vh;
+  padding: 8rem 0 0 8rem;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+  }
+
+  &__temp {
+    font-size: 8rem;
+
+    &--deg {
+      font-size: 8.5rem;
+      margin-left: 0.8rem;
+    }
+  }
+
+  &__condition {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 3rem;
+  }
+
+  &__icon {
+    font-size: 6rem;
+    margin-bottom: 2rem;
+  }
+
+  &__description {
+    font-size: 2.4rem;
+  }
+
+  &__location {
+    display: flex;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+
+    &--icon {
+      flex: 0;
+      font-size: 2rem;
+    }
+
+    &--text {
+      flex: 1;
+      margin-left: 1rem;
+    }
+  }
+
+  &__high-low {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.8rem;
+  }
+
+  &__high,
+  &__low {
+    align-items: center;
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  &__high-icon,
+  &__low-icon {
+    font-size: 3rem;
+  }
+
+  &__high-text,
+  &__low-text {
+    margin-left: 1rem;
+  }
+}

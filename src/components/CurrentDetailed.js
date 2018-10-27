@@ -52,14 +52,14 @@ const CurrentDetailed = props => {
         <h3>Sunrise & Sunset</h3>
 
         <div>
-          <span className="wi wi-sunrise" />
+          <i className="wi wi-sunrise" />
           <p>Sunrise</p>
           <p>
             {props.sunrise === 0
               ? "-"
               : moment.unix(props.sunrise).format("h:mm a")}
           </p>
-          <span className="wi wi-sunset" />
+          <i className="wi wi-sunset" />
           <p>Sunset</p>
           <p>
             {props.sunset === 0
@@ -73,13 +73,13 @@ const CurrentDetailed = props => {
         <h3>Atmosphere</h3>
 
         <div>
-          <span className="wi wi-humidity" />
+          <i className="wi wi-humidity" />
           <p>Humidity</p>
           <p>{props.humidity} %</p>
-          <span className="wi wi-barometer" />
+          <i className="wi wi-barometer" />
           <p>Barometric Pressure</p>
           <p>{inchesHg} inHg</p>
-          <span className="wi wi-dust" />
+          <i className="wi wi-dust" />
           <p>Visibility</p>
           <p>{miles} miles</p>
         </div>
@@ -89,10 +89,10 @@ const CurrentDetailed = props => {
         <h3>Wind</h3>
 
         <div>
-          <span className={`wi wi-wind towards-${closest}-deg`} />
+          <i className={`wi wi-wind towards-${closest}-deg`} />
           <p>Wind Direction</p>
           <p>{windDirection} deg</p>
-          <span className="wi wi-strong-wind" />
+          <i className="wi wi-strong-wind" />
           <p>Wind Speed</p>
           <p>{props.windSpeed} mph</p>
         </div>

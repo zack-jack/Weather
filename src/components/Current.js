@@ -70,33 +70,45 @@ const Current = props => {
   };
 
   return (
-    <div>
-      <div>
-        <h2>
+    <div className="current">
+      <div className="current__container">
+        <h2 className="current__temp">
           {Math.floor(props.currentTemp)}
-          <span className="wi wi-fahrenheit" />
+          <i className="current__temp--deg wi wi-fahrenheit" />
         </h2>
-        <span className={getIconClass(responseIcon)} />
-        <h3>{props.description}</h3>
-        <div>
-          <FontAwesomeIcon icon="map-marker-alt" />
-          <h3>
-            {props.city}, {props.country}
-          </h3>
+
+        <div className="current__condition">
+          <i className={`${getIconClass(responseIcon)} current__icon`} />
+          <h3 className="current__description">{props.description}</h3>
         </div>
       </div>
 
-      <div>
-        <span className="wi wi-direction-up" />
-        <p>
-          Today's high: {Math.floor(props.highTemp)}{" "}
-          <span className="wi wi-fahrenheit" />
-        </p>
-        <span className="wi wi-direction-down" />
-        <p>
-          Today's low: {Math.floor(props.lowTemp)}{" "}
-          <span className="wi wi-fahrenheit" />
-        </p>
+      <div className="current__location">
+        <FontAwesomeIcon
+          className="current__location--icon"
+          icon="map-marker-alt"
+        />
+        <h3 className="current__location--text">
+          {props.city ? `${props.city}, ${props.country}` : ""}
+        </h3>
+      </div>
+
+      <div className="current__high-low">
+        <div className="current__high">
+          <i className="wi wi-direction-up current__high-icon" />
+          <p className="current__high-text">
+            Today's high: {Math.floor(props.highTemp)}{" "}
+            <i className="wi wi-fahrenheit" />
+          </p>
+        </div>
+
+        <div className="current__low">
+          <i className="wi wi-direction-down current__low-icon" />
+          <p className="current__low-text">
+            Today's low: {Math.floor(props.lowTemp)}{" "}
+            <i className="wi wi-fahrenheit" />
+          </p>
+        </div>
       </div>
     </div>
   );
