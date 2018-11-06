@@ -1,7 +1,5 @@
 .current {
   color: $color-white;
-  height: 100vh;
-  padding: 8rem 0 0 8rem;
 
   &__container {
     display: flex;
@@ -10,10 +8,10 @@
   }
 
   &__temp {
-    font-size: 8rem;
+    font-size: 12rem;
 
     &--deg {
-      font-size: 8.5rem;
+      font-size: 12.5rem;
       margin-left: 0.8rem;
     }
   }
@@ -27,22 +25,21 @@
   }
 
   &__icon {
-    font-size: 6rem;
+    font-size: $font-size-l;
     margin-bottom: 2rem;
   }
 
   &__description {
-    font-size: 2.4rem;
+    font-size: $font-size-m;
   }
 
   &__location {
     display: flex;
-    font-size: 3rem;
+    font-size: $font-size-m;
     margin-bottom: 3rem;
 
     &--icon {
       flex: 0;
-      font-size: 2rem;
     }
 
     &--text {
@@ -54,7 +51,7 @@
   &__high-low {
     display: flex;
     flex-direction: column;
-    font-size: 1.8rem;
+    font-size: $font-size-s;
   }
 
   &__high,

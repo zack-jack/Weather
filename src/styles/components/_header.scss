@@ -2,11 +2,16 @@
 
 .header {
   align-items: center;
-  display: flex;
+  box-shadow: 0 0.5rem 3rem -0.8rem rgba($color-grey, 0.5);
+  display: grid;
+  grid-column: 1 / span 4;
+  grid-row: 1;
+  grid-template-columns: 0.8fr 1.2fr 1.2fr 0.8fr;
 
   &__logo-container {
     align-items: center;
     display: flex;
+    justify-content: center;
     flex: 0;
     padding: 2.5rem 0;
   }
@@ -28,7 +33,5 @@
   }
 
   &__search-container {
-    flex: 1;
-    margin-left: 5rem;
   }
 }
