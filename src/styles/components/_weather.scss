@@ -9,8 +9,8 @@
     display: grid;
     grid-column: 1 / span 4;
     grid-row: 2 / span 1;
-    grid-template-columns: 0.8fr 1.2fr 1.2fr 0.8fr;
-    grid-template-rows: 15rem auto;
+    grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr; //repeat(4, 1fr);
+    grid-template-rows: 12rem 40rem auto;
     padding-top: 8rem;
   }
 
@@ -34,5 +34,10 @@
   &__current-detailed {
     grid-column: 3 / span 1;
     grid-row: 1 / span 2;
+  }
+
+  &__button-box {
+    grid-column: 2 / span 2;
+    grid-row: 3 / span 1;
   }
 }

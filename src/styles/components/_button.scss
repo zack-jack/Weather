@@ -1,0 +1,33 @@
+.button {
+  &,
+  &:link,
+  &:visited {
+    background-color: $color-white;
+    border: none;
+    color: $color-dark-grey;
+    cursor: pointer;
+    font-size: $font-size-s;
+    margin-top: 3rem;
+    padding: 1.5rem 5rem;
+  }
+
+  &:hover {
+    box-shadow: $button-shadow-hover;
+    transform: translateY(-0.15rem);
+    transition: 0.1s ease-in-out;
+
+    &::after {
+      opacity: 0;
+      transform: scale(1.08);
+      transition: 0.1s ease-in-out;
+    }
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: $button-shadow-active;
+    outline: none;
+    transform: translateY(-0.5px);
+    transition: 0.1s ease-in-out;
+  }
+}

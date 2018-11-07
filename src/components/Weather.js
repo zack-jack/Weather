@@ -4,10 +4,10 @@ import moment from "moment";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
+import Button from "./Button";
 import Current from "./Current";
 import CurrentDetailed from "./CurrentDetailed";
 import Header from "./Header";
-import Search from "./Search";
 
 /* Font awesome icons library */
 library.add(faSearch, faMapMarkerAlt);
@@ -128,6 +128,7 @@ class Weather extends Component {
               lowTemp={this.state.data.main.temp_min}
             />
           </div>
+          <Button />
         </div>
       </div>
     );
