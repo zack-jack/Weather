@@ -9,6 +9,7 @@ import Current from './components/Current';
 import CurrentDetailed from './components/CurrentDetailed';
 import Header from './components/Header';
 import InvalidSearch from './components/InvalidSearch';
+import Landing from './components/Landing';
 
 /* Font awesome icons library */
 library.add(faSearch, faMapMarkerAlt);
@@ -125,7 +126,7 @@ class Weather extends Component {
   };
 
   renderDefault = () => {
-    return <Header getWeather={this.getWeather} />;
+    return <Landing />;
   };
 
   renderInvalidSearch = () => {
