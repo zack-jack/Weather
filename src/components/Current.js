@@ -45,7 +45,7 @@ const Current = props => {
         iconClass = "wi wi-cloudy";
         break;
       case "04n":
-        iconClass = "wi wi-cloudy-high";
+        iconClass = "wi wi-cloudy";
         break;
       case "09n":
         iconClass = "wi wi-night-showers";

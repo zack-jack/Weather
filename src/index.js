@@ -1,10 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "normalize.css";
-import "./styles/styles.scss";
-import Weather from "./components/Weather";
-import * as serviceWorker from "./serviceWorker";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'normalize.css';
 
-ReactDOM.render(<Weather />, document.getElementById("root"));
+import './styles/styles.scss';
+import Weather from './Weather';
 
-serviceWorker.unregister();
+ReactDOM.render(<Weather />, document.getElementById('root'));

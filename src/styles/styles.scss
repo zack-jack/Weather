@@ -1,13 +1,20 @@
 /* BASE STYLES
 ========================================== */
-@import "./base/settings";
-@import "./base/base";
+@import './base/base';
+
+/* UTILITIES
+========================================== */
+@import './utils/variables';
+
+/* LAYOUT STYLES
+========================================== */
+@import './layout/current';
+@import './layout/current-detailed';
+@import './layout/header';
+@import './layout/weather';
 
 /* COMPONENT STYLES
 ========================================== */
-@import "./components/button";
-@import "./components/current";
-@import "./components/current-detailed";
-@import "./components/header";
-@import "./components/search";
-@import "./components/weather";
+@import './components/button';
+@import './components/not-found';
+@import './components/search';
