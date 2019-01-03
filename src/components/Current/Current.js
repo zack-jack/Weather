@@ -13,12 +13,12 @@ const Current = props => {
     .format('ddd, MMM Do, YYYY h:mm a');
 
   return (
-    <div className="weather__details">
-      <div className="weather__timestamp">
+    <div className="current">
+      <div className="current__timestamp">
         <p>Last updated:</p>
         <h2>{timestamp === 0 ? '-' : formattedTimestamp}</h2>
       </div>
-      <div className="weather__current-detailed">
+      <div className="current__detailed">
         <CurrentDetailed
           humidity={data.main.humidity}
           sunrise={data.sys.sunrise}
@@ -28,7 +28,7 @@ const Current = props => {
           windSpeed={data.wind.speed}
         />
       </div>
-      <div className="weather__current">
+      <div className="current__overview">
         <CurrentOverview
           currentTemp={data.main.temp}
           icon={data.weather[0].icon}
@@ -39,7 +39,9 @@ const Current = props => {
           lowTemp={data.main.temp_min}
         />
       </div>
-      <Button route="/forecast" text="Get 5 Day Forecast" />
+      <div className="current__button-box">
+        <Button text="Get 5 Day Forecast" getForecast={props.getForecast} />
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { countries } from "../CountryCodes";
+import { countries } from '../utils/CountryCodes';
 
 const countriesSorted = countries.sort((a, b) => {
   return a.code < b.code ? -1 : a.code > b.code ? 1 : 0;

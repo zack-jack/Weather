@@ -1,4 +1,4 @@
-@import "../mixins/text-gradient";
+@import '../mixins/text-gradient';
 
 .header {
   align-items: center;
@@ -14,6 +14,11 @@
     justify-content: center;
     flex: 0;
     padding: 2.5rem 0;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__logo-text {
