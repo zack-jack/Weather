@@ -1,10 +1,12 @@
-import React from "react";
-import moment from "moment";
+import React from 'react';
+import moment from 'moment';
 
-const CurrentDetailed = props => {
+const CurrentDetailed = ({ currentData }) => {
+  const data = currentData;
+
   /* Converts meters to miles */
   /* 1 mile = 1609.34 meters */
-  const miles = Math.round((100 * props.visibility) / 1609.34) / 100;
+  const miles = Math.round((100 * data.visibility) / 1609.34) / 100;
 
   const directions = [
     0,
@@ -25,7 +27,7 @@ const CurrentDetailed = props => {
     336
   ];
 
-  const windDirection = Math.floor(props.windDirection);
+  const windDirection = Math.floor(data.wind.deg);
 
   const closest = directions
     .sort(
@@ -40,9 +42,9 @@ const CurrentDetailed = props => {
           <i className="wi wi-sunrise" />
           <p>Sunrise</p>
           <p>
-            {props.sunrise === 0
-              ? "-"
-              : moment.unix(props.sunrise).format("h:mm a")}
+            {data.sys.sunrise === 0
+              ? '-'
+              : moment.unix(data.sys.sunrise).format('h:mm a')}
           </p>
         </div>
 
@@ -51,9 +53,9 @@ const CurrentDetailed = props => {
 
           <p>Sunset</p>
           <p>
-            {props.sunset === 0
-              ? "-"
-              : moment.unix(props.sunset).format("h:mm a")}
+            {data.sys.sunset === 0
+              ? '-'
+              : moment.unix(data.sys.sunset).format('h:mm a')}
           </p>
         </div>
       </div>
@@ -62,7 +64,7 @@ const CurrentDetailed = props => {
         <div className="current-detailed__humidity">
           <i className="wi wi-humidity" />
           <p>Humidity</p>
-          <p>{props.humidity} %</p>
+          <p>{data.main.humidity} %</p>
         </div>
         <div className="current-detailed__visibility">
           <i className="wi wi-dust" />
@@ -80,7 +82,7 @@ const CurrentDetailed = props => {
         <div className="current-detailed__wind-speed">
           <i className="wi wi-strong-wind" />
           <p>Wind Speed</p>
-          <p>{props.windSpeed} mph</p>
+          <p>{data.wind.speed} mph</p>
         </div>
       </div>
     </div>

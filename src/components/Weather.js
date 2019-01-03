@@ -20,35 +20,11 @@ const api_key = process.env.REACT_APP_WEATHER_API_KEY;
 
 class Weather extends Component {
   state = {
-    data: {
-      dt: 0,
-      main: {
-        humidity: 0,
-        temp: 0,
-        temp_max: 0,
-        temp_min: 0
-      },
-      sys: {
-        country: '',
-        sunrise: 0,
-        sunset: 0
-      },
-      visibility: 0,
-      weather: [
-        {
-          description: '',
-          icon: ''
-        }
-      ],
-      wind: {
-        deg: 0,
-        speed: 0
-      }
-    },
     searchValue: '',
     countryCode: '',
     searchType: '',
-    forecast: {},
+    currentData: {},
+    forecastData: {},
     error: false,
     invalidSearch: false,
     loadingData: false,
@@ -104,13 +80,11 @@ class Weather extends Component {
       .get(route)
       .then(res => {
         if (res.status === 200) {
-          console.log(res.data);
           this.setState({
-            data: res.data,
+            currentData: res.data,
             error: false,
             invalidSearch: false
           });
-          console.log(this.state.data);
         } else {
           this.setState({
             error: true
@@ -160,7 +134,7 @@ class Weather extends Component {
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            forecast: res.data,
+            forecastData: res.data,
             error: false,
             invalidSearch: false
           });
@@ -202,29 +176,29 @@ class Weather extends Component {
   };
 
   renderElement = () => {
-    const { data, forecast, invalidSearch } = this.state;
-    const timestamp = data.dt;
+    const { currentData, forecastData, invalidSearch } = this.state;
+    const dataReady = currentData.cod === 200;
+    const forecastReady = forecastData.cod === '200';
 
-    if (!invalidSearch && timestamp === 0) {
-      return <Landing />;
-    } else if (invalidSearch) {
+    if (invalidSearch) {
       return <InvalidSearch />;
-    } else if (
-      !invalidSearch &&
-      timestamp !== 0 &&
-      forecast.cod === undefined
-    ) {
-      return <Current data={data} getForecast={this.getForecast} />;
-    } else if (!invalidSearch && forecast.cod === '200') {
-      return <Forecast />;
+    }
+
+    if (dataReady) {
+      if (forecastReady) {
+        return <Forecast />;
+      } else {
+        return (
+          <Current currentData={currentData} getForecast={this.getForecast} />
+        );
+      }
     } else {
-      return null;
+      return <Landing />;
     }
   };
 
   render() {
     const { loadingData, loadingPage } = this.state;
-    console.log(this.state.forecast.cod);
 
     return (
       <div>
