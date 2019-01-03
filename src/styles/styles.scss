@@ -8,8 +8,8 @@
 
 /* LAYOUT STYLES
 ========================================== */
-@import './layout/current';
 @import './layout/current-detailed';
+@import './layout/current-overview';
 @import './layout/header';
 @import './layout/landing';
 @import './layout/weather';
@@ -19,3 +19,4 @@
 @import './components/button';
 @import './components/not-found';
 @import './components/search';
+@import './components/spinner';

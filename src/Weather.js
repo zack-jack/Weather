@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import moment from 'moment';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { ClipLoader } from 'react-spinners';
 
-import Button from './components/Button';
-import Current from './components/Current';
-import CurrentDetailed from './components/CurrentDetailed';
+import Current from './components/Current/Current';
 import Header from './components/Header';
 import InvalidSearch from './components/InvalidSearch';
 import Landing from './components/Landing';
 
 /* Font awesome icons library */
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 library.add(faSearch, faMapMarkerAlt);
 
 const api_key = process.env.REACT_APP_WEATHER_API_KEY;
@@ -44,149 +43,123 @@ class Weather extends Component {
       }
     },
     error: false,
-    invalidSearch: false
+    invalidSearch: false,
+    loadingData: false,
+    loadingPage: true
   };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loadingPage: false });
+    }, 800);
+  }
 
   getWeather = e => {
     e.preventDefault();
 
+    this.setState({ loadingData: true });
+
     const searchValue = e.target.elements.search.value;
     const selectedCountryCode = e.target.elements.country.value;
 
+    /* Check if the search string is empty */
     const isEmpty = searchValue.length === 0 ? true : false;
-
-    const isNumbers = string => {
-      return /^\d{0,7}$/.test(string);
-    };
-
-    const isLetters = string => {
-      return /^[a-zA-Z]+$/.test(string);
-    };
 
     if (isEmpty) {
       this.setState({ error: true, invalidSearch: true });
     }
 
-    if (isNumbers(searchValue) === true) {
-      axios
-        .get(
-          `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue}&appid=${api_key}&units=imperial`
-        )
-        .then(res => {
-          if (res.status === 200) {
-            this.setState({
-              data: res.data,
-              error: false,
-              invalidSearch: false
-            });
-          } else {
-            this.setState({
-              error: true
-            });
-          }
-        })
-        .catch(err => {
-          if (err.response.data.cod === '404') {
-            this.setState({ error: true, invalidSearch: true });
-          } else {
-            console.log(err);
-          }
-        });
+    /* Define the correct API query string */
+    const isNumbers = /^\d{0,7}$/.test(searchValue);
+    const isLetters = /^[a-zA-Z]+$/.test(searchValue);
+
+    let route;
+    if (isNumbers) {
+      route = `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue}&appid=${api_key}&units=imperial`;
+    } else if (isLetters) {
+      route = `http://api.openweathermap.org/data/2.5/weather?q=${searchValue},${selectedCountryCode}&appid=${api_key}&units=imperial`;
+    } else {
+      this.setState({ error: true });
     }
 
-    if (isLetters(searchValue) === true) {
-      axios
-        .get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${searchValue},${selectedCountryCode}&appid=${api_key}&units=imperial`
-        )
-        .then(res => {
-          if (res.status === 200) {
-            this.setState({
-              data: res.data,
-              error: false,
-              invalidSearch: false
-            });
-          } else {
-            this.setState({
-              error: true
-            });
-          }
-        })
-        .catch(err => {
-          if (err.response.data.cod === '404') {
-            this.setState({ error: true, invalidSearch: true });
-          } else {
-            console.log(err);
-          }
-        });
-    }
+    /* Get data from API */
+    axios
+      .get(route)
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({
+            data: res.data,
+            error: false,
+            invalidSearch: false
+          });
+        } else {
+          this.setState({
+            error: true
+          });
+        }
+      })
+      .catch(err => {
+        if (err.response.data.cod === '404') {
+          this.setState({ error: true, invalidSearch: true });
+        } else {
+          console.log(err);
+        }
+      });
+
+    setTimeout(() => {
+      this.setState({
+        loadingData: false
+      });
+    }, 500);
 
     /* Clear the search input field */
     e.target.reset();
   };
 
-  renderDefault = () => {
-    return <Landing />;
+  renderSpinner = (isLoading, variant) => {
+    if (isLoading) {
+      return (
+        <div className={`spinner spinner--${variant}`}>
+          <ClipLoader
+            sizeUnit={'px'}
+            size={150}
+            color={'#5f27cd'}
+            loading={isLoading}
+          />
+        </div>
+      );
+    }
   };
 
-  renderInvalidSearch = () => {
-    return <InvalidSearch />;
-  };
-
-  renderCurrentWeather = () => {
+  renderElement = () => {
     const timestamp = this.state.data.dt;
-    const formattedTimestamp = moment
-      .unix(timestamp)
-      .format('ddd, MMM Do, YYYY h:mm a');
 
-    return (
-      <div className="weather__details">
-        <div className="weather__timestamp">
-          <p>Last updated:</p>
-          <h2>{this.timestamp === 0 ? '-' : formattedTimestamp}</h2>
-        </div>
-        <div className="weather__current-detailed">
-          <CurrentDetailed
-            humidity={this.state.data.main.humidity}
-            sunrise={this.state.data.sys.sunrise}
-            sunset={this.state.data.sys.sunset}
-            visibility={this.state.data.visibility}
-            windDirection={this.state.data.wind.deg}
-            windSpeed={this.state.data.wind.speed}
-          />
-        </div>
-        <div className="weather__current">
-          <Current
-            currentTemp={this.state.data.main.temp}
-            icon={this.state.data.weather[0].icon}
-            description={this.state.data.weather[0].description}
-            city={this.state.data.name}
-            country={this.state.data.sys.country}
-            highTemp={this.state.data.main.temp_max}
-            lowTemp={this.state.data.main.temp_min}
-          />
-        </div>
-        <Button />
-      </div>
-    );
+    if (!this.state.invalidSearch && timestamp === 0) {
+      return <Landing />;
+    } else if (this.state.invalidSearch) {
+      return <InvalidSearch />;
+    } else if (!this.state.invalidSearch && timestamp !== 0) {
+      return <Current data={this.state.data} />;
+    } else {
+      return null;
+    }
   };
 
   render() {
-    const timestamp = this.state.data.dt;
+    const { loadingData, loadingPage } = this.state;
 
     return (
-      <div className="weather">
-        <Header getWeather={this.getWeather} />
-
-        {!this.state.invalidSearch && timestamp === 0
-          ? this.renderDefault()
-          : null}
-
-        {this.state.invalidSearch ? this.renderInvalidSearch() : null}
-
-        {!this.state.invalidSearch && timestamp !== 0
-          ? this.renderCurrentWeather()
-          : null}
+      <div>
+        {loadingPage ? (
+          this.renderSpinner(loadingPage, 'full')
+        ) : (
+          <div className="weather">
+            <Header getWeather={this.getWeather} />
+            {loadingData
+              ? this.renderSpinner(loadingData, 'content')
+              : this.renderElement()}
+          </div>
+        )}
       </div>
     );
   }

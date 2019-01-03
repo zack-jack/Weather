@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Button = () => (
+const Button = props => (
   <div className="weather__button-box">
-    <a href="/">
-      <button className="weather__button button">Get 5 Day Forecast</button>
+    <a href={props.route}>
+      <button className="weather__button button">{props.text}</button>
     </a>
   </div>
 );
