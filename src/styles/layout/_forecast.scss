@@ -1,5 +1,9 @@
 .forecast {
   background-image: linear-gradient(135deg, $color-secondary, $color-primary);
   background-size: cover;
+  display: grid;
+  grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
+  height: fit-content;
+  padding: 8rem 0;
   width: 100vw;
 }
