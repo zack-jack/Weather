@@ -42,8 +42,9 @@ class Weather extends Component {
 
     this.setState({ loadingData: true });
 
-    const searchValue = e.target.elements.search.value;
-    const countryCode = e.target.elements.country.value.toUpperCase();
+    const target = e.target.elements;
+    const searchValue = target.search.value;
+    const countryCode = target.country.value.toUpperCase();
 
     if (isEmpty(searchValue)) {
       this.setState({ error: true, invalidSearch: true });
@@ -186,7 +187,7 @@ class Weather extends Component {
 
     if (dataReady) {
       if (forecastReady) {
-        return <Forecast />;
+        return <Forecast forecastData={forecastData} />;
       } else {
         return (
           <Current currentData={currentData} getForecast={this.getForecast} />

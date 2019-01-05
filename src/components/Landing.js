@@ -12,8 +12,7 @@ const Landing = () => {
             Don't let bad weather ruin your next day out.
           </h1>
           <p className="landing__paragraph">
-            Realtime weather data viewable directly on your device instantly. No
-            boring weatherman, no guesswork, and no surprises.
+            Realtime weather data viewable directly on your device instantly.
           </p>
           <p className="landing__paragraph">
             Get started now by entering either a zip code or a city name and

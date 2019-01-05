@@ -39,7 +39,7 @@ const CurrentOverview = ({ currentData }) => {
         <div className="current-overview__high">
           <i className="wi wi-direction-up current-overview__high-icon" />
           <p className="current-overview__high-text">
-            Today's high: {Math.floor(data.main.temp_max)}{' '}
+            Today's high: {Math.floor(data.main.temp_max)}
             <i className="wi wi-fahrenheit" />
           </p>
         </div>
@@ -47,7 +47,7 @@ const CurrentOverview = ({ currentData }) => {
         <div className="current-overview__low">
           <i className="wi wi-direction-down current-overview__low-icon" />
           <p className="current-overview__low-text">
-            Today's low: {Math.floor(data.main.temp_min)}{' '}
+            Today's low: {Math.floor(data.main.temp_min)}
             <i className="wi wi-fahrenheit" />
           </p>
         </div>

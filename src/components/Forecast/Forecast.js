@@ -1,9 +1,11 @@
 import React from 'react';
 
-const Forecast = () => {
+import ForecastCards from './ForecastCards';
+
+const Forecast = ({ forecastData }) => {
   return (
-    <div>
-      <h2>Forecast</h2>
+    <div className="forecast">
+      <ForecastCards forecastData={forecastData} />
     </div>
   );
 };
