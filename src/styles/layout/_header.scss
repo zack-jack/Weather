@@ -5,8 +5,20 @@
   box-shadow: 0 0.5rem 3rem -0.8rem rgba($color-grey, 0.5);
   display: grid;
   grid-column: 1 / span 4;
+  grid-column-gap: 4rem;
   grid-row: 1;
   grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
+
+  @include tablet-landscape {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  @include tablet-portrait {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   &__logo-container {
     align-items: center;
@@ -18,6 +30,10 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    @include tablet-portrait {
+      margin-bottom: 2rem;
     }
   }
 
@@ -35,8 +51,29 @@
     font-size: 6rem;
     margin-left: 8rem;
     padding: 2rem 0;
+
+    @include tablet-landscape {
+      margin-left: 2rem;
+    }
+
+    @include tablet-portrait {
+      margin-left: 0;
+    }
   }
 
   &__search-container {
+    grid-column: 2 / span 2;
+
+    @include laptop-small {
+      grid-column: 2 / span 3;
+    }
+
+    @include tablet-landscape {
+      margin-right: 2rem;
+    }
+
+    @include tablet-portrait {
+      margin-right: 0;
+    }
   }
 }

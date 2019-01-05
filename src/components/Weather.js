@@ -105,7 +105,7 @@ class Weather extends Component {
       this.setState({
         loadingData: false
       });
-    }, 500);
+    }, 800);
 
     /* Clear the search input field */
     e.target.reset();
@@ -114,7 +114,7 @@ class Weather extends Component {
   getForecast = e => {
     e.preventDefault();
 
-    this.setState({ loadingData: true });
+    this.setState({ currentData: {}, loadingData: true });
 
     const { searchValue, countryCode, searchType } = this.state;
 
@@ -158,7 +158,7 @@ class Weather extends Component {
       this.setState({
         loadingData: false
       });
-    }, 500);
+    }, 800);
   };
 
   renderSpinner = (isLoading, variant) => {
@@ -186,13 +186,11 @@ class Weather extends Component {
     }
 
     if (dataReady) {
-      if (forecastReady) {
-        return <Forecast forecastData={forecastData} />;
-      } else {
-        return (
-          <Current currentData={currentData} getForecast={this.getForecast} />
-        );
-      }
+      return (
+        <Current currentData={currentData} getForecast={this.getForecast} />
+      );
+    } else if (forecastReady) {
+      return <Forecast forecastData={forecastData} />;
     } else {
       return <Landing />;
     }

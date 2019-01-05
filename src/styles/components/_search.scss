@@ -12,6 +12,10 @@
     &:focus {
       outline: none;
     }
+
+    @include phone-med {
+      width: 25rem;
+    }
   }
 
   &__option {
@@ -20,6 +24,10 @@
     height: 2.7rem;
     margin-left: 2.5rem;
     padding: 0 0 0.5rem 0;
+
+    @include phone-med {
+      margin-left: 1rem;
+    }
   }
 
   &__icon {
@@ -35,6 +43,10 @@
 
     &:hover {
       cursor: pointer;
+    }
+
+    @include phone-med {
+      margin-left: 1rem;
     }
   }
 }

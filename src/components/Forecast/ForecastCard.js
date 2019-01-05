@@ -1,8 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 
-import getIconClass from '../../utils/getIconClass';
-
 const ForecastCard = props => {
   const dayOfWeek = props.day;
   const data = props.data.filter(dataObj => {
