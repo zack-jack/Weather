@@ -7,7 +7,7 @@
   grid-column: 1 / span 4;
   grid-column-gap: 4rem;
   grid-row: 1;
-  grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
+  grid-template-columns: 0.55fr 3fr;
 
   @include tablet-portrait {
     align-items: center;

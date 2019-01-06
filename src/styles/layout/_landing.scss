@@ -1,6 +1,7 @@
 .landing {
   background-image: linear-gradient(135deg, $color-white, $color-offwhite);
   grid-column: 1 / span 4;
+  height: 100vh;
   width: 100vw;
 
   &__wrapper {

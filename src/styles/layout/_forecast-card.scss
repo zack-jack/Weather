@@ -8,7 +8,33 @@
   flex-direction: column;
   margin-bottom: 4rem;
   padding: 4rem 0;
-  width: 50vw;
+  width: 70vw;
+
+  @include desktop-large {
+    width: 60vw;
+  }
+
+  @include desktop-med {
+    width: 75vw;
+  }
+
+  @include desktop {
+    width: 80vw;
+  }
+
+  @include laptop-large {
+    width: 85vw;
+  }
+
+  @include tablet-medium {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include phone {
+    display: flex;
+    flex-direction: column;
+  }
 
   &__heading {
     border-bottom: 1px solid $color-offwhite;
@@ -16,6 +42,11 @@
     margin-bottom: 4rem;
     padding-bottom: 1rem;
     text-align: center;
+
+    @include tablet-medium {
+      justify-self: center;
+      width: 80%;
+    }
   }
 
   &__title {
@@ -27,6 +58,15 @@
     display: grid;
     grid-column-gap: 2rem;
     grid-template-columns: repeat(8, 10rem);
+
+    @include laptop {
+      grid-gap: 4rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include tablet-medium {
+      grid-template-columns: 1fr;
+    }
   }
 
   &__list-item {

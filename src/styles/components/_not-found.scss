@@ -2,12 +2,18 @@
   background-image: linear-gradient(135deg, $color-secondary, $color-primary);
   background-size: cover;
   color: $color-white;
-  display: grid;
-  grid-column-gap: 4rem;
-  grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
   font-size: $font-size-m;
-  padding: 8rem 0;
+  padding: 8rem 0 0 15vw;
   width: 100vw;
+
+  @include tablet-portrait {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  @include phone {
+    padding: 4rem 6rem 0 6rem;
+  }
 
   & > p {
     grid-column-start: 2;

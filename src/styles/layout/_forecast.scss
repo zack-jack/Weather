@@ -1,10 +1,14 @@
 .forecast {
   background-image: linear-gradient(135deg, $color-secondary, $color-primary);
   background-size: cover;
-  display: grid;
-  grid-column-gap: 4rem;
-  grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
+  display: flex;
   height: fit-content;
   padding: 8rem 0;
+  padding-left: 15vw;
   width: 100vw;
+
+  @include desktop-med {
+    justify-content: center;
+    padding-left: 0;
+  }
 }

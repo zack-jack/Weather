@@ -3,6 +3,6 @@
   grid-template-rows: 15vh 85vh;
 
   @include tablet-portrait {
-    grid-template-rows: 20vh 80vh;
+    grid-template-rows: 20rem 80vh;
   }
 }
