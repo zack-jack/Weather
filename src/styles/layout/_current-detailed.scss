@@ -7,6 +7,11 @@
   padding-top: 10rem;
   text-align: center;
 
+  @include tablet-portrait {
+    padding: 0;
+    text-align: left;
+  }
+
   i {
     font-size: $font-size-m;
     margin-bottom: 1.2rem;
@@ -19,6 +24,14 @@
     grid-template-columns: repeat(2, 20rem);
     grid-template-rows: 4rem 8rem;
     line-height: 2.2rem;
+
+    @include tablet-landscape {
+      grid-template-columns: repeat(2, 18rem);
+    }
+
+    @include phone {
+      grid-template-columns: repeat(2, auto);
+    }
   }
 
   &__sunrise-sunset {

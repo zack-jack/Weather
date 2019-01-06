@@ -6,7 +6,19 @@
   &__wrapper {
     align-items: center;
     display: flex;
-    width: 100vw;
+
+    @include laptop-small {
+      justify-content: space-evenly;
+    }
+
+    @include tablet-portrait {
+      flex-direction: column;
+      flex-flow: column-reverse;
+    }
+
+    @include phone-large {
+      justify-content: space-between;
+    }
   }
 
   &__copy {
@@ -14,16 +26,52 @@
     line-height: 2;
     text-align: justify;
     width: 30vw;
+
+    @include laptop-small {
+      text-align: left;
+    }
+
+    @include tablet-portrait {
+      line-height: 1.75;
+      padding: 4rem 0;
+      text-align: center;
+      width: 50vw;
+    }
+
+    @include phone-large {
+      line-height: 1.5;
+      width: 75vw;
+    }
+
+    @include phone {
+      padding: 3rem 0;
+    }
+
+    @include phone-small {
+      padding: 1.5rem 0;
+    }
   }
 
   &__heading {
     font-size: $font-size-m;
     margin-bottom: 3rem;
+
+    @include phone-large {
+      margin-bottom: 2rem;
+    }
+
+    @include phone-small {
+      font-size: $font-size-s;
+    }
   }
 
   &__paragraph {
     font-size: $font-size-s;
     margin-bottom: 2rem;
+
+    @include laptop-small {
+      text-align: justify;
+    }
 
     &:last-of-type {
       margin-bottom: 0;
@@ -34,5 +82,14 @@
     grid-column: 1 / span 2;
     padding: 8rem;
     width: 50vw;
+
+    @include laptop-small {
+      padding: 8rem 0;
+    }
+
+    @include tablet-portrait {
+      padding: 0;
+      width: 70vw;
+    }
   }
 }

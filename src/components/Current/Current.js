@@ -13,18 +13,20 @@ const Current = ({ currentData, getForecast }) => {
 
   return (
     <div className="current">
-      <div className="current__timestamp">
-        <p>Last updated:</p>
-        <h2>{timestamp === 0 ? '-' : formattedTimestamp}</h2>
-      </div>
-      <div className="current__detailed">
-        <CurrentDetailed currentData={currentData} />
-      </div>
-      <div className="current__overview">
-        <CurrentOverview currentData={currentData} />
-      </div>
-      <div className="current__button-box">
-        <Button text="Get 5 Day Forecast" getForecast={getForecast} />
+      <div className="current__wrapper">
+        <div className="current__timestamp">
+          <p>Last updated:</p>
+          <h2>{timestamp === 0 ? '-' : formattedTimestamp}</h2>
+        </div>
+        <div className="current__detailed">
+          <CurrentDetailed currentData={currentData} />
+        </div>
+        <div className="current__overview">
+          <CurrentOverview currentData={currentData} />
+        </div>
+        <div className="current__button-box">
+          <Button text="Get 5 Day Forecast" getForecast={getForecast} />
+        </div>
       </div>
     </div>
   );

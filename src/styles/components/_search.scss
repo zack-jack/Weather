@@ -2,6 +2,10 @@
   color: $color-dark-grey;
   font-size: $font-size-s;
 
+  @include phone-small {
+    font-size: $font-size-xs;
+  }
+
   &__input {
     border: none;
     border-bottom: 1px solid $color-dark-grey;
@@ -13,8 +17,12 @@
       outline: none;
     }
 
-    @include phone-med {
-      width: 25rem;
+    @include phone-large {
+      width: 22rem;
+    }
+
+    @include phone-small {
+      width: 18rem;
     }
   }
 
@@ -25,7 +33,7 @@
     margin-left: 2.5rem;
     padding: 0 0 0.5rem 0;
 
-    @include phone-med {
+    @include phone-large {
       margin-left: 1rem;
     }
   }
@@ -45,7 +53,7 @@
       cursor: pointer;
     }
 
-    @include phone-med {
+    @include phone-large {
       margin-left: 1rem;
     }
   }

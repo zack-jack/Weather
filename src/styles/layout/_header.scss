@@ -9,13 +9,9 @@
   grid-row: 1;
   grid-template-columns: 0.9fr 1fr 1.2fr 0.9fr;
 
-  @include tablet-landscape {
-    display: flex;
-    justify-content: space-evenly;
-  }
-
   @include tablet-portrait {
     align-items: center;
+    display: flex;
     flex-direction: column;
     justify-content: center;
   }
@@ -33,7 +29,15 @@
     }
 
     @include tablet-portrait {
-      margin-bottom: 2rem;
+      margin: 2rem 0;
+    }
+
+    @include phone {
+      margin: 1rem 0;
+    }
+
+    @include phone-small {
+      margin: 0;
     }
   }
 
@@ -43,6 +47,14 @@
     font-size: 4rem;
     margin: 0;
     margin-left: 1.25rem;
+
+    @include phone-large {
+      font-size: 3.5rem;
+    }
+
+    @include phone-small {
+      font-size: 2.5rem;
+    }
   }
 
   &__logo {
@@ -58,6 +70,14 @@
 
     @include tablet-portrait {
       margin-left: 0;
+    }
+
+    @include phone-large {
+      font-size: 5rem;
+    }
+
+    @include phone-small {
+      font-size: 3.5rem;
     }
   }
 
