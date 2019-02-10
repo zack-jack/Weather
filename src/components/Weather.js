@@ -67,10 +67,10 @@ class Weather extends Component {
     /* Define the correct API query string */
     let route;
     if (isNumbers) {
-      route = `http://api.openweathermap.org/data/2.5/weather?zip=${searchValue}&appid=${api_key}&units=imperial`;
+      route = `//api.openweathermap.org/data/2.5/weather?zip=${searchValue}&appid=${api_key}&units=imperial`;
       this.setState({ searchType: 'byZip' });
     } else if (isLetters) {
-      route = `http://api.openweathermap.org/data/2.5/weather?q=${searchValue},${countryCode}&appid=${api_key}&units=imperial`;
+      route = `//api.openweathermap.org/data/2.5/weather?q=${searchValue},${countryCode}&appid=${api_key}&units=imperial`;
       this.setState({ searchType: 'byCity' });
     } else {
       this.setState({ error: true });
@@ -122,9 +122,9 @@ class Weather extends Component {
     let route;
 
     if (searchType === 'byZip') {
-      route = `http://api.openweathermap.org/data/2.5/forecast?zip=${searchValue},${countryCode}&appid=${api_key}&units=imperial`;
+      route = `//api.openweathermap.org/data/2.5/forecast?zip=${searchValue},${countryCode}&appid=${api_key}&units=imperial`;
     } else if (searchType === 'byCity') {
-      route = `http://api.openweathermap.org/data/2.5/forecast?q=${searchValue},{countryCode}&appid=${api_key}&units=imperial`;
+      route = `//api.openweathermap.org/data/2.5/forecast?q=${searchValue},{countryCode}&appid=${api_key}&units=imperial`;
     } else {
       this.setState({ error: true });
     }
