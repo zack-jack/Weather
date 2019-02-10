@@ -16,6 +16,8 @@ import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faSearch, faMapMarkerAlt);
 
+require('dotenv').config();
+
 const api_key = process.env.REACT_APP_WEATHER_API_KEY;
 
 class Weather extends Component {
