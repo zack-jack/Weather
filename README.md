@@ -10,6 +10,6 @@ To try out this app locally, clone the repository and run the following commands
 
 Downloads all project dependencies locally.
 
-### npm run start
+### npm run dev
 
-Starts up the react script hosted on port 5000.
+Starts up the react script hosted on port 3000.
