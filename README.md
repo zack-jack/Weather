@@ -1,17 +1,9 @@
-## Weather
+# Weather
 
 Single page weather api web app.
 
-View the live demo [here](http://colorful-ocean.surge.sh).
-
 This React app utilizes [Open Weather App](https://openweathermap.org/api) API.
 
-To try out this app locally, clone the repository and run the following commands from the project directory:
+## Live Demo
 
-### npm install
-
-Downloads all project dependencies locally.
-
-### npm run dev
-
-Starts up the react script hosted on port 3000.
+Click [here](http://colorful-ocean.surge.sh) to view a live demo.
